@@ -10,10 +10,10 @@
     <title>电子数据认证平台</title>
     <link rel="shortcut icon" href="https://www.baoquan.com/bundle/logo.ico">
     <script charset="utf-8" src="./js/b.js"/>
-    <script src="./js/hm.js."/>
+    <script src="./js/hm.js"/>
     <script src="./js/hm.js(1)"/>
-    <script src="./js/hm.js(2)."/>
-    <script src="./js/push.js."/>
+    <script src="./js/hm.js(2)"/>
+    <script src="./js/push.js"/>
     <script>
         ! function() {
             var t = document.createElement("script"),
@@ -80,46 +80,46 @@
                         <div class="language">
                             <p>
                                 <!-- react-text: 24 -->已有保全网账号
-                                <!-- /react-text --><a href="https://www.baoquan.com/sign-in?lang=zh"><span class="to-sign-in">直接登录</span></a></p>
+                                <!-- /react-text --><a href="login.html"><span class="to-sign-in">直接登录</span></a></p>
                         </div>
                     </div>
                 </header>
-                <form class="registry-form">
+                <form class="registry-form" method="get" action="/register">
                     <h1>欢迎注册数据认证平台</h1>
                     <section>
                         <div class="row-input input-component" style="position: relative;">
-                            <input type="text" name="phoneNumber" placeholder="请输入手机号码" draggable="false" autocomplete="off" style="height: 44px; width: 340px;">
+                            <input type="text" name="phone" placeholder="请输入手机号码" draggable="false" autocomplete="off" style="height: 44px; width: 340px;">
                             <!-- react-text: 32 -->
                             <!-- /react-text -->
                             <p class="error-content"><i class="iconfont font-error" style="line-height: 44px;"></i>
                                 <label class="error-text" style="line-height: 44px;"></label>
                             </p>
                         </div><span class="name">手机号码</span></section>
-                    <section>
-                        <div class="verify"><span class="name">图形验证码</span><img src="data:image/png;base64,/9j/4AAQSkZJRgABAgAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAAoAGQDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD0T/hGdH/58/8AyK/+NH/CM6P/AM+f/kV/8a1qy9W1CWBo7S0G67m+7/sj1rByaI1IJdB0GDHnQxx5/vzsP5tSx+HtDmXdFAki+qzMR/OnQeHbXG+8Z7iZuWZnIGfwqle6e+j3UN3pyylS2HjGW4/wqXOS1Yy2+gaDHIsbwxq7/dVp2BP0G6pP+EZ0f/nz/wDIr/41Wf8A0vxcg6rbx5/TP82Fb9NSbEYkugaDAAZoY489N87DP5tUX9leGfW3/wDAk/8AxVJq6Lfa/ZWTDcgG5hn15I/IVLqGj6Za6fPOtthkQ7Tvbr27+tJzlrYZH/ZXhn1t/wDwJP8A8VTho3h1o2kCwlFxuYXDYGfU7qZo+i2dxpkU1zDvkfJzvYcZ46GrV/pttbaJdx20WwFd55J6c9/pQpTtcBE8N6LIgdLUMpGQRK5B/Wl/4RnR/wDn0/8AIr/41NoUnmaNbnuAV/ImotevWgtVtocm4uDsUDrjv/hT53a4tSBNE8PSDKJCw6ZFwx/9morS06yWwso4BgsOXPq3eimnILlusPTh9p8Q6hcNyYcRr7dv6H863K5uSZtD1ueWVGNrdHduXsev8yfzqJaWYI6So3nhjkWN5UV2+6pYAn6CsyXxHp6JmN3lbsqoQf1qmkM5W61m9XZIIyIYz/DxgUOS6BYrWMeoXt/eXlhNHFlyCzjOQTkAcH2rQ+y+Iv8An/t/++R/8TUvhuHytIRscyMW/p/StSWQRRPI3RFLH8KUY6XG2c5oqTz69cy3MgkkhUoWUcZzjjgehq54nm2aYIh1lkAx7Dn/AApnhiMm1nuG+9LJ19cf/XJpmsf6Trun2nUKd7D8f8FpfY9Q6m1aw/Z7SGH+4gX8hTp4/Ot5Y/76FfzFSUVqIwvDMyrpMu84EUhJJ7DAP+NJpaNqepy6pKD5aHZAp7e/+e5rJXzxdXelQDBnnwT6KCc/0/KuvtrdLW3jgjGEQYFZR1suw2S0UUVqSZP/AAk2j/8AP5/5Cf8Awpr+I9FkUq9yrKeoaJiP5UUVpyIuxFHrfh6Ft0TxI3qtuw/9lqSTxFokqFJLlXQ9VaFiD+lFFHIgsKniPRY0CJcqqjgKsTAD9KG8SaK6FHugysMEGJyCPyooo5EFhI/EOhwoEiuFRB0VYWA/lSHX9BMwmM0fmjgP5Dbvz20UUciCxJ/wk2j/APP5/wCQn/wo/wCEm0f/AJ/P/IT/AOFFFHIgsRLr2gJMZlljEp6uIG3H8dtS/wDCTaP/AM/n/kJ/8KKKORBYP+Em0f8A5/P/ACE/+FFFFHIgsf/Z"
-                                                                                style="width: 88px; height: 30px; margin-left: 136px;"></div>
-                        <div class="row-input input-component" style="position: relative;">
-                            <input type="text" name="checkCode" placeholder="请输入图形验证码" maxlength="4" draggable="false" autocomplete="off" style="height: 44px; width: 340px;">
-                            <!-- react-text: 43 -->
-                            <!-- /react-text -->
-                            <p class="error-content"><i class="iconfont font-error" style="line-height: 44px;"></i>
-                                <label class="error-text" style="line-height: 44px;"></label>
-                            </p>
-                        </div>
-                    </section>
-                    <section>
-                        <div class="verify"><span class="name">短信验证码</span>
-                            <button type="button" class="code" disabled="">发送验证码</button>
-                        </div>
-                        <div class="row-input input-component" style="position: relative;">
-                            <input type="text" name="verifyCode" placeholder="请输入短信验证码" draggable="false" autocomplete="off" style="height: 44px; width: 340px;">
-                            <!-- react-text: 53 -->
-                            <!-- /react-text -->
-                            <p class="error-content"><i class="iconfont font-error" style="line-height: 44px;"></i>
-                                <label class="error-text" style="line-height: 44px;"></label>
-                            </p>
-                        </div>
-                    </section>
+{{/*                    <section>*/}}
+{{/*                        <div class="verify"><span class="name">图形验证码</span><img src="data:image/png;base64,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"*/}}
+{{/*                                                                                style="width: 88px; height: 30px; margin-left: 136px;"></div>*/}}
+{{/*                        <div class="row-input input-component" style="position: relative;">*/}}
+{{/*                            <input type="text" name="checkCode" placeholder="请输入图形验证码" maxlength="4" draggable="false" autocomplete="off" style="height: 44px; width: 340px;">*/}}
+{{/*                            <!-- react-text: 43 -->*/}}
+{{/*                            <!-- /react-text -->*/}}
+{{/*                            <p class="error-content"><i class="iconfont font-error" style="line-height: 44px;"></i>*/}}
+{{/*                                <label class="error-text" style="line-height: 44px;"></label>*/}}
+{{/*                            </p>*/}}
+{{/*                        </div>  */}}
+{{/*                    </section>*/}}
+{{/*                    <section>*/}}
+{{/*                        <div class="verify"><span class="name">短信验证码</span>*/}}
+{{/*                            <button type="button" class="code" disabled="">发送验证码</button>*/}}
+{{/*                        </div>*/}}
+{{/*                        <div class="row-input input-component" style="position: relative;">*/}}
+{{/*                            <input type="text" name="verifyCode" placeholder="请输入短信验证码" draggable="false" autocomplete="off" style="height: 44px; width: 340px;">*/}}
+{{/*                            <!-- react-text: 53 -->*/}}
+{{/*                            <!-- /react-text -->*/}}
+{{/*                            <p class="error-content"><i class="iconfont font-error" style="line-height: 44px;"></i>*/}}
+{{/*                                <label class="error-text" style="line-height: 44px;"></label>*/}}
+{{/*                            </p>*/}}
+{{/*                        </div>*/}}
+{{/*                    </section>*/}}
                     <section>
                         <div class="verify"><span class="name">设置密码</span>
                             <div class="code" style="display: flex; margin-left: 159px; background: rgb(255, 255, 255); color: rgb(22, 135, 238); align-items: center; justify-content: flex-end; font-weight: 700; width: 60px;"><i class="iconfont font-yanjingbi" style="font-size: 24px;"></i></div>
@@ -185,7 +185,7 @@
         t.parentNode.insertBefore(e, t)
     }()
 </script>
-<script src="./js/data-set.min.js."></script>
+<script src="./js/data-set.min.js"></script>
 <script src="./js/set-cookies"></script>
 <script src="./js/es6-shim-8e9077312e.js"></script>
 <script src="./js/jquery-02053ebe83.js"></script>
