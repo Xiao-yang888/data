@@ -11,7 +11,7 @@ import (
 )
 //数据库连接
 var Db *sql.DB
-func Connect (){
+func Connect(){
 	fmt.Println("连接数据库")
     
 	//项目配置
