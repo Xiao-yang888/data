@@ -2,15 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ae2961-ded0-4aa1-a013-fc5ff2cc517c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/controllers/UploadFile.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/upload.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conf/app.conf" beforeDir="false" afterPath="$PROJECT_DIR$/conf/app.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/default.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/default.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/login.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/login.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/register.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/register.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db_mysql/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/db_mysql/db.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routers/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,26 +129,26 @@
     </state>
     <state x="421" y="99" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1602408521628" />
     <state x="449" y="106" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1602637209848" />
-    <state width="1323" height="197" key="GridCell.Tab.0.bottom" timestamp="1602763544163">
+    <state width="1323" height="181" key="GridCell.Tab.0.bottom" timestamp="1602765044343">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1237" height="162" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1602414632066" />
-    <state width="1323" height="197" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1602763544163" />
-    <state width="1323" height="197" key="GridCell.Tab.0.center" timestamp="1602763544162">
+    <state width="1323" height="181" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1602765044343" />
+    <state width="1323" height="181" key="GridCell.Tab.0.center" timestamp="1602765044343">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1237" height="162" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1602414632066" />
-    <state width="1323" height="197" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1602763544162" />
-    <state width="1323" height="197" key="GridCell.Tab.0.left" timestamp="1602763544162">
+    <state width="1323" height="181" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1602765044343" />
+    <state width="1323" height="181" key="GridCell.Tab.0.left" timestamp="1602765044343">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1237" height="162" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1602414632066" />
-    <state width="1323" height="197" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1602763544162" />
-    <state width="1323" height="197" key="GridCell.Tab.0.right" timestamp="1602763544162">
+    <state width="1323" height="181" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1602765044343" />
+    <state width="1323" height="181" key="GridCell.Tab.0.right" timestamp="1602765044343">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1237" height="162" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1602414632066" />
-    <state width="1323" height="197" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1602763544162" />
+    <state width="1323" height="181" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1602765044343" />
     <state x="184" y="6" key="SettingsEditor" timestamp="1602637145188">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
