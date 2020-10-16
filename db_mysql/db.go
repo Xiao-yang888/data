@@ -1,10 +1,7 @@
 package db_mysql
 
 import (
-	"crypto/md5"
-	"data/models"
 	"database/sql"
-	"encoding/hex"
 	"fmt"
 	"github.com/astaxie/beego"
 	_ "github.com/mysql"
@@ -30,23 +27,4 @@ func Connect(){
 	}
 	Db = db
 	//fmt.Println(db)
-}
-
-func AddUser(u models.User)(int64, error){
-	//1,将密码进行hash计算，得到密码hash值，然后再存
-	md5Hash := md5.New()
-	md5Hash.Write([]byte(u.Password))
-	passwordBytes := md5Hash.Sum(nil)
-	u.Password = hex.EncodeToString(passwordBytes)
-
-	result, err := Db.Exec("insert into user(name,birthday,password)" +
-		"value(?,?,?,?)",u.Id,u.Phone,u.Password)
-	if err != nil{
-		return -1, err
-	}
-	row,err := result.RowsAffected()
-	if err != nil{
-		return -1, err
-	}
-	return row,nil
 }

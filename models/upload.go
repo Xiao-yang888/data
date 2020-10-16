@@ -21,7 +21,7 @@ type Upload struct {
  *把一条认证数据保存到数据库中
  */
 
-func (u Upload) SaveRecord() (interface{}, error) {
+func (u Upload) SaveRecord() (int64, error) {
 	rs, err := db_mysql.Db.Exec("insert into upload_record(user_id, file_name, file_size, file_cert, file_title, cert_time) " +
 		"values(?,?,?,?,?) ")
 	if err != nil {

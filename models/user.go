@@ -7,7 +7,7 @@ import (
 )
 
 type User struct {
-	Id string `form:"id"`
+	Id int `form:"id"`
 	Phone string `form:"phone"`
 	Password string `form:"password"`
 }

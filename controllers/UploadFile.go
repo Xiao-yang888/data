@@ -67,13 +67,13 @@ func (u *UploadFileController) Post() {
     fileMd5Bytes, err := ioutil.ReadAll(saveFile)
     md5Hash.Write(fileMd5Bytes)
     bytes := md5Hash.Sum(nil)
-    record := models.Upload{
-		UserId:   user.Id,
-    	FileName: header.Filename,
-    	FileSize: header.Size,
-    	FileCert: hex.EncodeToString(bytes),
-    	FileTitle: title,
-    	CertTime: time.Now().Unix(),
+	record := models.Upload{
+		UserId:    user.Id,
+		FileName:  header.Filename,
+		FileSize:  header.Size,
+		FileCert:  hex.EncodeToString(bytes),
+		FileTitle: title,
+		CertTime:  time.Now().Unix(),
 	}
 	//保存认证数据到数据库
 	_, err = record.SaveRecord()
@@ -84,15 +84,16 @@ func (u *UploadFileController) Post() {
 
     //上传文件保存到数据库成功
 
-    records, err := models.QueryRecordsByUserId(user.Id)
-    if err != nil {
-    	u.Ctx.WriteString("抱歉，获取电子数据列表失败，请重新尝试！")
+	records, err := models.QueryRecordsByUserId(user.Id)
+	if err != nil {
+		u.Ctx.WriteString("抱歉, 获取电子数据列表失败, 请重新尝试!")
 		return
 	}
-    u.Data["Records"] = records
-    u.TplName = "list_record.html"
-//	u.Ctx.WriteString("恭喜，已接收到上传文件")
+	u.Data["Records"] = records
+	u.TplName = "list_record.html"
 }
+//	u.Ctx.WriteString("恭喜，已接收到上传文件")
+
 
 
 /**
