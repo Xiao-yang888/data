@@ -8,6 +8,7 @@ import (
 type RegisterController struct {
 	beego.Controller
 }
+
 //展示默认首页，注册页面
 func (r *RegisterController) Post() {
 

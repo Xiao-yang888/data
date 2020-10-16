@@ -1,7 +1,9 @@
 package controllers
 
 import (
+	"crypto/md5"
 	"crypto/sha256"
+	"data/models"
 	"encoding/hex"
 	"fmt"
 	"github.com/astaxie/beego"
@@ -9,6 +11,7 @@ import (
 	"io/ioutil"
 	"os"
 	"strings"
+	"time"
 )
 
 /*
@@ -22,6 +25,8 @@ type UploadFileController struct {
  *该post方法用于处理用户在客户端提交的文件
  */
 func (u *UploadFileController) Post() {
+
+	phone := u.Ctx.Request.PostFormValue("phone")
 	title := u.Ctx.Request.PostFormValue("upload_title")//用户输入的标题
 	fmt.Println("电子数据标签:",title)
 	file, header, err := u.GetFile("zengyang")
@@ -33,7 +38,7 @@ func (u *UploadFileController) Post() {
 
 	//使用io包提供的方法保存文件
 	saveFilePath := "static/upload/" + header.Filename
-	saveFile, err :=os.OpenFile(saveFilePath,os.O_CREATE || os.O_RDWR,777)
+	saveFile, err := os.OpenFile(saveFilePath, os.O_CREATE|os.O_RDWR, 777)
 	if err != nil {
 		u.Ctx.WriteString("抱歉，电子数据认证失败，请重试！")
 		return
@@ -52,10 +57,41 @@ func (u *UploadFileController) Post() {
 	fmt.Println(hex.EncodeToString(hashBytes))
 
     //先查询用户ID
-
+    user, err := models.User{Phone: phone}.QueryUserByPhone()
+    if err != nil {
+    	u.Ctx.WriteString("抱歉，电子数据认证失败，请稍后再试！")
+		return
+	}
     //把上传的文件作为记录保存到数据库中
+    md5Hash := md5.New()
+    fileMd5Bytes, err := ioutil.ReadAll(saveFile)
+    md5Hash.Write(fileMd5Bytes)
+    bytes := md5Hash.Sum(nil)
+    record := models.Upload{
+		UserId:   user.Id,
+    	FileName: header.Filename,
+    	FileSize: header.Size,
+    	FileCert: hex.EncodeToString(bytes),
+    	FileTitle: title,
+    	CertTime: time.Now().Unix(),
+	}
+	//保存认证数据到数据库
+	_, err = record.SaveRecord()
+	if err != nil{
+		u.Ctx.WriteString("抱歉，电子数据认证保存失败，请稍后重试！")
+		return
+	}
 
-	u.Ctx.WriteString("恭喜，已接收到上传文件")
+    //上传文件保存到数据库成功
+
+    records, err := models.QueryRecordsByUserId(user.Id)
+    if err != nil {
+    	u.Ctx.WriteString("抱歉，获取电子数据列表失败，请重新尝试！")
+		return
+	}
+    u.Data["Records"] = records
+    u.TplName = "list_record.html"
+//	u.Ctx.WriteString("恭喜，已接收到上传文件")
 }
 
 

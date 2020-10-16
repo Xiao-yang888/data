@@ -42,6 +42,7 @@ func (u User) AddUser() (int64,error) {
  *查询用户信息
  */
 func (u User) QueryUser() (*User,error) {
+
 	hashMd5 := md5.New()
 	hashMd5.Write([]byte(u.Password))
 	pwdBytes := hashMd5.Sum(nil)
@@ -55,5 +56,15 @@ func (u User) QueryUser() (*User,error) {
 		return nil,err
 	}
 	return &u,nil
+}
+
+func (u User) QueryUserByPhone() (*User, error) {
+	row := db_mysql.Db.QueryRow("select id from user where phone = ?",u.Phone)
+	var user User
+	err := row.Scan(&user.Id)
+	if err != nil{
+		return nil, err
+	}
+	return &user, nil
 }
 
