@@ -19,7 +19,8 @@ func Connect(){
 	dbIp := config.String("db_ip")
 	dbName := config.String("db_name")
 	//db.Open连接数据库，有两个参数
-	db,err := sql.Open(dbDriver,dbUser+":"+dbPwd+"@tpc("+dbIp+")/"+dbName+"?charset=utf8")
+	db,err := sql.Open(dbDriver,dbUser+":"+dbPwd+"@tcp("+dbIp+")/"+dbName+"?charset=utf8")
+	fmt.Println(dbUser,dbPwd,dbIp,dbName)
 	if err != nil{//err 不为nil时 连接数据库发生错误，程序就在此中断，无需再向下执行
 		//早发现，早解决
 		panic("数据库连接错误，请查找bug后再试")

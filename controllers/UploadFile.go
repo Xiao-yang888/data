@@ -1,14 +1,10 @@
 package controllers
 
 import (
-	"crypto/md5"
-	"crypto/sha256"
 	"data/models"
-	"encoding/hex"
+	"data/utils"
 	"fmt"
 	"github.com/astaxie/beego"
-	"io"
-	"io/ioutil"
 	"os"
 	"strings"
 	"time"
@@ -36,25 +32,17 @@ func (u *UploadFileController) Post() {
 	}
 	defer file.Close()//延迟执行 空指针错误：invalid memorey or nil pointer derefernce
 
-	//使用io包提供的方法保存文件
+	//调用
 	saveFilePath := "static/upload/" + header.Filename
-	saveFile, err := os.OpenFile(saveFilePath, os.O_CREATE|os.O_RDWR, 777)
-	if err != nil {
-		u.Ctx.WriteString("抱歉，电子数据认证失败，请重试！")
+	_, err = utils.SaveFile(saveFilePath,file)
+    if err != nil {
+    	u.Ctx.WriteString("抱歉，文件数据认证失败，请重试！")
 		return
-	}
-	_, err = io.Copy(saveFile,file)
-	if err != nil{
-		u.Ctx.WriteString("抱歉，电子数据认证失败，请重试！")
-		return
-	}
+    }
 
 	//计算文件的SHA256值
-	hash256 := sha256.New()
-	fileBytes, _ := ioutil.ReadAll(file)
-	hash256.Write(fileBytes)
-	hashBytes := hash256.Sum(nil)
-	fmt.Println(hex.EncodeToString(hashBytes))
+	filehash, err := utils.Sha256HashReader(file)
+	fmt.Println(filehash)
 
     //先查询用户ID
     user, err := models.User{Phone: phone}.QueryUserByPhone()
@@ -62,19 +50,23 @@ func (u *UploadFileController) Post() {
     	u.Ctx.WriteString("抱歉，电子数据认证失败，请稍后再试！")
 		return
 	}
+
     //把上传的文件作为记录保存到数据库中
-    md5Hash := md5.New()
-    fileMd5Bytes, err := ioutil.ReadAll(saveFile)
-    md5Hash.Write(fileMd5Bytes)
-    bytes := md5Hash.Sum(nil)
+    //计算md5值
+    md5String, err :=utils.MD5HashReader(file)
+    if err != nil {
+    	u.Ctx.WriteString("抱歉，电子数据认证失败")
+		return
+	}
 	record := models.Upload{
 		UserId:    user.Id,
 		FileName:  header.Filename,
 		FileSize:  header.Size,
-		FileCert:  hex.EncodeToString(bytes),
+		FileCert:  md5String,
 		FileTitle: title,
 		CertTime:  time.Now().Unix(),
 	}
+
 	//保存认证数据到数据库
 	_, err = record.SaveRecord()
 	if err != nil{
@@ -83,8 +75,7 @@ func (u *UploadFileController) Post() {
 	}
 
     //上传文件保存到数据库成功
-
-	records, err := models.QueryRecordsByUserId(user.Id)
+    records, err := models.QueryRecordsByUserId(user.Id)
 	if err != nil {
 		u.Ctx.WriteString("抱歉, 获取电子数据列表失败, 请重新尝试!")
 		return
