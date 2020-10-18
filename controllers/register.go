@@ -10,11 +10,13 @@ type RegisterController struct {
 	beego.Controller
 }
 
+
+
 //展示默认首页，注册页面
 func (r *RegisterController) Post() {
 
 	var user models.User
-	err:= r.ParseForm(&user)
+	err := r.ParseForm(&user)
 	if err != nil {
 		r.Ctx.WriteString("抱歉，数据解析失败，请重试！")
 		return
@@ -28,7 +30,7 @@ func (r *RegisterController) Post() {
 	}
 
 	r.TplName = "login.html"
-
+}
     ////将解析到的数据保存到数据库中
 	//row, err := db_mysql.AddUser(user)
 	//if err != nil {
@@ -43,4 +45,4 @@ func (r *RegisterController) Post() {
 	//}else{
 	//	r.TplName = "error.html"
 	//}
-}
+

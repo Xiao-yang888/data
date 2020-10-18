@@ -204,7 +204,7 @@
                                 <div class="attestations-profile main-container">
                                     <div class="attestations-profile-content upload-content">
                                         <section class="file-content"><!-- react-text: 679 --><!-- /react-text -->
-                                            <form method="post" enctype="multipart/form-data" action="/upload">
+                                            <form method="post" enctype="multipart/form-data" action="/UploadFile">
                                                 <div class="files-container">
                                                     <div class="files-box">
                                                         <div class="tag"><p><span class="musts">*</span><span>文件标签</span>
@@ -251,14 +251,14 @@
                                                             <div class="upload-icon"><i
                                                                         class="iconfont font-upload"></i>
                                                                 <p class="click-upload">点击上传</p><input type="file"
-                                                                                                       name="yuhongwei"
+                                                                                                       name="zengyang"
                                                                                                        title=" "
                                                                                                        multiple=""
                                                                                                        id="uploadOne">
                                                             </div>
                                                         </div>
                                                         <!--用户嘚phone信息-->
-                                                        <input type="text" value="{{.Phone}}" hidden = >
+                                                        <input type="text" value="{{.Phone}}" hidden = "hidden" name="phone">
                                                         <input class="blueButton" type="submit" value="立即存证"/>
 
                                                     </div>

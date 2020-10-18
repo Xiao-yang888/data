@@ -17,4 +17,8 @@ func init() {
 
     beego.Router("/login.html",&controllers.LoginController{})
 
+    beego.Router("/list_record.html", &controllers.UploadFileController{})
+
+    beego.Router("/UploadFile",&controllers.UploadFileController{})
+
 }

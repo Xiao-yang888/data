@@ -37,7 +37,7 @@ func (u *UploadFileController) Post() {
 	_, err = utils.SaveFile(saveFilePath,file)
     if err != nil {
     	u.Ctx.WriteString("抱歉，文件数据认证失败，请重试！")
-		return
+    	return
     }
 
 	//计算文件的SHA256值
@@ -45,8 +45,10 @@ func (u *UploadFileController) Post() {
 	fmt.Println(filehash)
 
     //先查询用户ID
-    user, err := models.User{Phone: phone}.QueryUserByPhone()
+    fmt.Println(phone)
+    user1, err := models.User{Phone: phone}.QueryUserByPhone()
     if err != nil {
+    	fmt.Println(err.Error())
     	u.Ctx.WriteString("抱歉，电子数据认证失败，请稍后再试！")
 		return
 	}
@@ -59,7 +61,7 @@ func (u *UploadFileController) Post() {
 		return
 	}
 	record := models.Upload{
-		UserId:    user.Id,
+		UserId:    user1.Id,
 		FileName:  header.Filename,
 		FileSize:  header.Size,
 		FileCert:  md5String,
@@ -75,13 +77,14 @@ func (u *UploadFileController) Post() {
 	}
 
     //上传文件保存到数据库成功
-    records, err := models.QueryRecordsByUserId(user.Id)
+    records, err := models.QueryRecordsByUserId(user1.Id)
 	if err != nil {
 		u.Ctx.WriteString("抱歉, 获取电子数据列表失败, 请重新尝试!")
 		return
 	}
 	u.Data["Records"] = records
 	u.TplName = "list_record.html"
+
 }
 //	u.Ctx.WriteString("恭喜，已接收到上传文件")
 

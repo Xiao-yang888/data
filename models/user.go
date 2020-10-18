@@ -42,7 +42,7 @@ func (u User) QueryUser() (*User,error) {
 	//把加密的密码的md5值虫嗪赋值为密码进行储存
 	u.Password = utils.MD5HashString(u.Password)
 
-	row := db_mysql.Db.QueryRow("select phone from user where phone = ? and password = ?",
+	row := db_mysql.Db.QueryRow("select phone from data where phone = ? and password = ?",
 		u.Phone, u.Password)
     fmt.Println(u.Phone,u.Password)
 	err := row.Scan(&u.Phone)
@@ -53,12 +53,11 @@ func (u User) QueryUser() (*User,error) {
 }
 
 func (u User) QueryUserByPhone() (*User, error) {
-	row := db_mysql.Db.QueryRow("select id from user where phone = ?",u.Phone)
-	var user User
-	err := row.Scan(&user.Id)
+	row := db_mysql.Db.QueryRow("select id from data where phone = ?",u.Phone)
+	err := row.Scan(&u.Phone)
 	if err != nil{
 		return nil, err
 	}
-	return &user, nil
+	return &u, nil
 }
 

@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="51ae2961-ded0-4aa1-a013-fc5ff2cc517c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/utils/file.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/hash.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/UploadFile.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/UploadFile.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/register.go" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/register.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db_mysql/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/db_mysql/db.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/upload.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/upload.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routers/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/routers/router.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/list_record.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/list_record.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/views/login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +69,8 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="com.goide.configuration.GoLibrariesConfigurableProvider" />
+    <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -127,30 +128,30 @@
     </state>
     <state x="421" y="99" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1602408521628" />
     <state x="449" y="106" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1602637209848" />
-    <state width="1323" height="171" key="GridCell.Tab.0.bottom" timestamp="1603024756732">
+    <state width="1323" height="144" key="GridCell.Tab.0.bottom" timestamp="1603036614392">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1237" height="162" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1602414632066" />
-    <state width="1323" height="171" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1603024756732" />
-    <state width="1323" height="171" key="GridCell.Tab.0.center" timestamp="1603024756731">
+    <state width="1323" height="144" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1603036614392" />
+    <state width="1323" height="144" key="GridCell.Tab.0.center" timestamp="1603036614391">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1237" height="162" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1602414632066" />
-    <state width="1323" height="171" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1603024756731" />
-    <state width="1323" height="171" key="GridCell.Tab.0.left" timestamp="1603024756731">
+    <state width="1323" height="144" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1603036614391" />
+    <state width="1323" height="144" key="GridCell.Tab.0.left" timestamp="1603036614391">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1237" height="162" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1602414632066" />
-    <state width="1323" height="171" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1603024756731" />
-    <state width="1323" height="171" key="GridCell.Tab.0.right" timestamp="1603024756731">
+    <state width="1323" height="144" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1603036614391" />
+    <state width="1323" height="144" key="GridCell.Tab.0.right" timestamp="1603036614392">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="1237" height="162" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1602414632066" />
-    <state width="1323" height="171" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1603024756731" />
-    <state x="184" y="6" key="SettingsEditor" timestamp="1602836747239">
+    <state width="1323" height="144" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1603036614392" />
+    <state x="184" y="6" key="SettingsEditor" timestamp="1603033730845">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1602836747239" />
+    <state x="184" y="6" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1603033730845" />
     <state x="475" y="281" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603023334285">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -159,6 +160,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1603021322121" />
+    <state x="405" y="276" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1603036565514">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="405" y="276" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1366.728@0.0.1366.728" timestamp="1603036565514" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
