@@ -20,7 +20,7 @@ type Block struct {
 func NewBlock(height int64, prevHash []byte, data []byte) Block {
     block := Block{
 		Height:    height,
-		TimeStamp: time.Now().Unix,
+		TimeStamp: time.Now().Unix(),
 		PrevHash:  prevHash,
 		Data:      data,
 		Version:   "0*01",
@@ -33,6 +33,6 @@ func NewBlock(height int64, prevHash []byte, data []byte) Block {
  *创建创世区块
  */
 func CreateGenesisBlock() Block {
-	NewBlock(0,[]byte{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},nil)
+	genesisBlock := NewBlock(0,[]byte{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},nil)
     return genesisBlock
 }

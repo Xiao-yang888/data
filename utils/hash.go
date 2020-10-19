@@ -35,7 +35,7 @@ func MD5HashReader(reader io.Reader) (string, error) {
 /*
  *读取io流当中的数据，并对数据进行hash计算，返回hash256 hash值
  */
-func Sha256HashReader(reader io.Reader) (string, error) {
+func SHA256HashReader(reader io.Reader) (string, error) {
 	sha256Hash := sha256.New()
 	readerBytes, err := ioutil.ReadAll(reader)
 	if err != nil {
