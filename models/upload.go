@@ -1,7 +1,8 @@
 package models
 
-import   (
+import (
 	"data/db_mysql"
+	"data/utils"
 )
 
 /*
@@ -15,6 +16,7 @@ type Upload struct {
 	FileCert string
 	FileTitle string
 	CertTime int64
+	CertTimeFormat string //仅用于
 }
 
 /**
@@ -50,6 +52,9 @@ func QueryRecordsByUserId(userId int) ([]Upload, error) {
 	    if err != nil {
 	    	return nil, err
 		}
+		//整型--> 字符串：**年**月**日
+		tStr :=utils.TimeFormat(record.CertTime, "utils.TIME_Format_THREE")
+		record.CertTimeFormat = tStr
 		records = append(records,record)
 	}
 	return records, nil

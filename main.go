@@ -1,12 +1,20 @@
 package main
 
 import (
+	"data/blockchain"
 	"data/db_mysql"
 	_ "data/routers"
 	"github.com/astaxie/beego"
 )
 
 func main() {
+
+	block0 := blockchain.CreateGenesisBlock()
+    block1 := blckchain.NewBlock(block0.Height+1, block0.Hash, []byte("a"))
+    fmt.Println(block0,block1)
+	return
+
+
 	//连接数据库
 	db_mysql.Connect()
 	//静态资源文件路径映射
