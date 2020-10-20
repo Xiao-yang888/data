@@ -11,6 +11,7 @@ import (
 func main() {
 
 
+
 	//连接数据库
 	db_mysql.Connect()
 	//静态资源文件路径映射

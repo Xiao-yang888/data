@@ -1,9 +1,10 @@
 package utils
 
 import (
+	"bytes"
 	"crypto/md5"
 	"crypto/sha256"
-	"encoding/hex"
+	 "encoding/hex"
 	"io"
 	"io/ioutil"
 )
@@ -44,4 +45,30 @@ func SHA256HashReader(reader io.Reader) (string, error) {
 	sha256Hash.Write(readerBytes)
 	hashBytes := sha256Hash.Sum(nil)
 	return hex.EncodeToString(hashBytes), nil
+}
+
+/**
+ *对区块数据进行SHA256hash计算
+ */
+func SHA256HashBlock(block blockchain.Block) []byte {
+	//1,将block结构体数据转换为[]byte类型
+	heightBytes, _ := Int64TOByte(block.Height)
+	timeStampBytes, _ := Int64TOByte(block.TimeStamp)
+	versionBytes := StringToBytes(block.Version)
+
+	var blockBytes []byte
+	//bytes.Join 拼接
+	bytes.Join([] []byte{
+		heightBytes,
+		timeStampBytes,
+		block.PrevHash,
+		block.Data,
+		versionBytes,
+	}, []byte{})
+
+	//2，将转换后的[]byte字节切片输入Write方法
+	sha256Hash := sha256.New()
+	sha256Hash.Write(blockBytes)
+	hash := sha256Hash.Sum(nil)
+	return hash
 }
