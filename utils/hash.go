@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"crypto/md5"
 	"crypto/sha256"
-	 "encoding/hex"
+	"encoding/hex"
 	"io"
 	"io/ioutil"
 )
@@ -13,7 +13,7 @@ import (
  *对一个字符串数据进行Md5哈希计算
  */
 func MD5HashString(data string) (string) {
-	md5Hash := md5.New()
+	md5Hash := md5.New() 
 	md5Hash.Write([]byte(data))
 	bytes := md5Hash.Sum(nil)
 	return hex.EncodeToString(bytes)
@@ -50,6 +50,15 @@ func SHA256HashReader(reader io.Reader) (string, error) {
 /**
  *对区块数据进行SHA256hash计算
  */
+type Block struct {
+	Height    int64   //区块的高度，第几个区块
+	TimeStamp int64   //时间戳，区块产生的时间
+	PrevHash  []byte  //前一个字段的hash
+	Data      []byte  //数据字段
+	Hash      []byte  //当前字段的hash
+	Version   string  //版本号
+}
+
 func SHA256HashBlock(block blockchain.Block) []byte {
 	//1,将block结构体数据转换为[]byte类型
 	heightBytes, _ := Int64TOByte(block.Height)

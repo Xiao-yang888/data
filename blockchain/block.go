@@ -15,6 +15,7 @@ type Block struct {
 	Data      []byte  //数据字段
 	Hash      []byte  //当前字段的hash
 	Version   string  //版本号
+	Nonce     int64   //区块对应的nonce值
 }
 
 /**
@@ -28,8 +29,26 @@ func NewBlock(height int64, prevHash []byte, data []byte) Block {
 		Data:      data,
 		Version:   "0*01",
 	}
+
+	//1,将block结构体数据转换为[]byte类型
+	heightBytes, _ := Int64TOByte(block.Height)
+	timeStampBytes, _ := Int64TOByte(block.TimeStamp)
+	versionBytes := StringToBytes(block.Version)
+
+	var blockBytes []byte
+	//bytes.Join 拼接
+	bytes.Join([] []byte{
+		heightBytes,
+		timeStampBytes,
+		block.PrevHash,
+		block.Data,
+		versionBytes,
+	}, []byte{})
 	//调用Hash计算，对区块链进行SHA256计算
-	block.Hash = utils.SHA256HashBlock(block)
+	block.Hash = utils.SHA256HashBlock(blockBytes)
+
+	//挖矿竞争获得记账权
+
 	return block
 }
 
