@@ -81,6 +81,7 @@ func (b Block) Serialize() ([]byte) {
 
 /**
  *区块反序列化操作
+ *为了将数据持久化存储
  */
 func DeSerialize(data []byte) (*Block, error) {
 	var block Block

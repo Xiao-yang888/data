@@ -8,7 +8,7 @@ import (
 )
 
 //设置难度
-const DIFFICULTY = 10
+const DIFFICULTY = 16
 
 /**
  *工作量证明算法结构体
