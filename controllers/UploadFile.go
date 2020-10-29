@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"data/blockchain"
 	"data/models"
 	"data/utils"
 	"fmt"
@@ -56,7 +57,7 @@ func (u *UploadFileController) Post() {
 	}
 
 	//把上传的文件作为记录保存到数据库当中
-	//① 计算md5值
+	//计算md5值
 	saveFile, err := os.Open(saveFilePath)
 	md5String, err := utils.MD5HashReader(saveFile)
 	if err != nil {
@@ -71,13 +72,17 @@ func (u *UploadFileController) Post() {
 		FileTitle: title,
 		CertTime:  time.Now().Unix(),
 	}
-	//② 保存认证数据到数据库中
+	//保存认证数据到数据库中
 	_, err = record.SaveRecord()
 	if err != nil {
 		fmt.Println("保存认证记录:", err.Error())
 		u.Ctx.WriteString("抱歉，电子数据认证保存失败，请稍后再试!")
 		return
 	}
+
+	//将用户上传的文件的md5值和sha256值保存到区块链上，即数据上链
+    blockchain.CHAIN.AddData([]byte(fileHash))
+
 	//上传文件保存到数据库中成功
 	records, err := models.QueryRecordsByUserId(user1.Id)
 	if err != nil {
