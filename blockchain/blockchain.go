@@ -2,7 +2,6 @@ package blockchain
 
 import (
     "errors"
-	"fmt"
 	"github.com/bolt-master"
     "math/big"
 )
@@ -181,7 +180,7 @@ func (bc *BlockChain) AddData(data []byte) (Block, error) {
 		bucket := tx.Bucket([]byte(BUCKET_NAME))
 		//序列化后的区块数据
 		blockBytes := newBlock.Serialize()
-		fmt.Println("保存数据到区块，序列化后的区块数据", blockBytes)
+		//fmt.Println("保存数据到区块，序列化后的区块数据", blockBytes)
 		//把新创建的区块存入到boltdb数据库中
 		bucket.Put(newBlock.Hash, blockBytes)
 		//更新LASTHASH对应的值，更新为最新存储的区块的hash值
@@ -191,4 +190,44 @@ func (bc *BlockChain) AddData(data []byte) (Block, error) {
 	})
 	//返回值语句，newBlock， err， 其中err可能包含错误信息
 	return newBlock, err
+}
+
+/**
+ *该方法用于根据用户输入的认证号查询到对应的区块信息
+ */
+func (bc BlockChain) QueryBlockByCertId(cert_id string) (*Block, error) {
+	db := bc.BoltDb
+	var err error
+	var block *Block
+	db.View(func(tx *bolt.Tx) error {
+		bucket := tx.Bucket([]byte(BUCKET_NAME))
+		if bucket == nil {//判断桶是否存在
+			err = errors.New("查询链上数据发生错误，请重试！")
+			return err
+		}
+		eachHash := bc.LastHash
+
+		eachBig := new(big.Int)
+		zeroBig := big.NewInt(0)
+		for {
+			eachBlockBytes := bucket.Get(eachHash)
+			eachBlock, err := DeSerialize(eachBlockBytes)
+			if err != nil {
+				break
+			}
+			//将遍历到的区块中的数据跟用户提供的认证号进行比较
+			if string(eachBlock.Data) == cert_id{//if成立，找到区块了
+				block = eachBlock
+				break
+			}
+
+			eachBig.SetBytes(eachBlock.PrevHash)
+			if eachBig.Cmp(zeroBig) == 0 {//到传世区块
+				break
+			}
+			eachHash = eachBlock.PrevHash
+		}
+		return nil
+	})
+	return block, err
 }

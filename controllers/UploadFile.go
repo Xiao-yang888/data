@@ -53,6 +53,7 @@ func (u *UploadFileController) Post() {
 	if err != nil {
 		fmt.Println("查询用户:", err.Error())
 		u.Ctx.WriteString("抱歉，电子数据认证失败，请稍后再试!")
+		fmt.Println(err.Error())
 		return
 	}
 
@@ -80,8 +81,29 @@ func (u *UploadFileController) Post() {
 		return
 	}
 
+	user := &models.User{
+		Phone: phone,
+	}
+	user, _ = user.QueryUserByPhone()
 	//将用户上传的文件的md5值和sha256值保存到区块链上，即数据上链
-    blockchain.CHAIN.AddData([]byte(fileHash))
+	certRecord := models.CertRecord{
+		CertId:   []byte(md5String),
+		CertHash: []byte(fileHash),
+		CertName: user.Name,
+		CertCard: user.Card,
+		Phone:    user.Phone,
+		FileName: header.Filename,
+		FileSize: header.Size,
+		CertTime: time.Now().Unix(),
+	}
+	//序列化
+	certBytes, _ := certRecord.Serialize()
+	block, err := blockchain.CHAIN.AddData(certBytes)
+	if err != nil {
+		u.Ctx.WriteString("抱歉，数据上链错误：" + err.Error())
+		return
+	}
+	fmt.Println("恭喜，已经数据保存到区块链中，区块高度是:", block.Height)
 
 	//上传文件保存到数据库中成功
 	records, err := models.QueryRecordsByUserId(user1.Id)
@@ -173,7 +195,7 @@ func (u *UploadFileController) Post1() {
 	fmt.Println("要保存的文件名", saveName)
 	//fromFile: 文件，
 	//toFile: 要保存的文件路径
-	err = u.SaveToFile("yuhongwei", saveName)
+	err = u.SaveToFile("zengyang", saveName)
 	if err != nil {
 		fmt.Println(err.Error())
 		u.Ctx.WriteString("抱歉，文件认证失败，请重试!")

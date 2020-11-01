@@ -4,6 +4,7 @@ import (
 	"data/models"
 	"fmt"
 	"github.com/astaxie/beego"
+	"strings"
 )
 
 type LoginController struct {
@@ -37,6 +38,13 @@ func (l *LoginController) Post() {
 		//sql : no rows in result set(集合)，结果集中没有数据
 		fmt.Println(err.Error())
 		l.Ctx.WriteString("抱歉，用户登陆失败，请重试！")
+		return
+	}
+
+	//增加逻辑：判断用户是否已实名认证，如果没有实名认证，则跳转到认证页面，执行认证任务
+	if strings.TrimSpace(u.Name) == "" || strings.TrimSpace(u.Card) == "" { //两者有其一，即为没有进行实名认证
+		l.Data["Phone"] = user.Phone
+		l.TplName = "user_kyc.html"
 		return
 	}
 
