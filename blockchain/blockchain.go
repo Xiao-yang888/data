@@ -1,9 +1,10 @@
 package blockchain
 
 import (
-    "errors"
+	"data/models"
+	"errors"
 	"github.com/bolt-master"
-    "math/big"
+	"math/big"
 )
 
 const BLOCKCHAIN  = "chain.db"
@@ -209,13 +210,19 @@ func (bc BlockChain) QueryBlockByCertId(cert_id string) (*Block, error) {
 
 		eachBig := new(big.Int)
 		zeroBig := big.NewInt(0)
-		for {
+		for {//无限循环遍历，查询对应cert_id的区块数据
 			eachBlockBytes := bucket.Get(eachHash)
 			eachBlock, err := DeSerialize(eachBlockBytes)
 			if err != nil {
 				break
 			}
 			//将遍历到的区块中的数据跟用户提供的认证号进行比较
+			_, err = models.DeserializeCertRecord(eachBlock.Data)
+			if err != nil {
+				err = errors.New("查询链上数据发生错误,请重试!")
+				break
+			}
+
 			if string(eachBlock.Data) == cert_id{//if成立，找到区块了
 				block = eachBlock
 				break

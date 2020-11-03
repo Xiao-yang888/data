@@ -119,21 +119,21 @@
                                             <!-- /react-text --><!-- react-text: 56 -->256<!-- /react-text --></span>
                                             <div class="hash-mob"
                                                  style="display: flex; align-items: center; flex-wrap: wrap;">
-                                        <p style="color: rgb(19, 142, 254); overflow-wrap: break-word; word-break: normal; max-width: 100%; display: inline-block;">{{.CertHash}}</p>
+                                        <p style="color: rgb(19, 142, 254); overflow-wrap: break-word; word-break: normal; max-width: 100%; display: inline-block;">{{.CertRecord.CertHash}}</p>
                                         <span><div
                                                 class="el-popover" style="width: 320px; display: none;"><div
                                                 class="el-popover__title">存证文件HASH</div><div><p
                                                 style="color: rgb(51, 51, 51);">存证文件HASH是通过SHA256算法计算后得出的文件HASH值，与原始存证文件唯一对应。该HASH值将被实时写入认证链，确保文件的不可篡改</p></div><div
-                                                class="/popper__arrow"></div></div><span
+                                                class="popper__arrow"></div></div><span
                                                 class="help-icon">?</span></span>
                                     </div>
-                                    </div>
+                                    </p></div>
                                 <div class="chain">
                                     <p class="block-chain-hash"><span>国密SM3的HASH</span>
                                         <div style="display: flex;">
                                     <p style="color: rgb(19, 142, 254); overflow-wrap: break-word; word-break: normal; max-width: 100%; display: inline-block;">
                                         08debf1e38f2af5f9ddea110be4b1940bda6a46919b979a780671e66d7c54530</p></div>
-                                </div>
+                                </p></div>
                         </div>
                         <div class="block-chain-item"><span class="chain-name">VERAXCHAIN</span>
                             <div class="info"><p class="description">
@@ -160,7 +160,7 @@
                     您可以复制证据提取码与本页面网址链接一同分享给第三方，以供对方下载查看证据文件；若您不提供提取码，对方仅能通过链接查阅认证证书，无权下载证据包</p></div>
             <div class="popper__arrow"></div>
         </div>
-        <span class="help-icon">?</span></div>
+        <span class="help-icon">?</span></span></p></div>
     <div class="attestation-actions"><a class="btn att-btn-success download-pdf downloadable" target="_blank"
                                         href="https://www.baoquan.com/ws/attestations/81D5D8117C50443A9B7AC11471350720/download?token=iqGShaRkqAtEZUA-K5jk55dyxGnkMaXZCpXB1F7Gn9zjWx75AHG-cb-jM9xsOtngbHrDVBb6GPG5-KsMrS5CsNQtFr3fAlDieUbojT1JDRTbeES2Mpkw37KnZXPqp5vE&amp;lang=zh">下载证据</a>
         <!-- react-text: 98 --><!-- /react-text --></div><!-- react-text: 73 --><!-- /react-text -->
@@ -173,22 +173,22 @@
     <div>
         <div style="word-break:break-all;word-wrap:break-word;" class="page cert-cover theme-3">
             <h2 class="cert-cover-title">电子数据认证书</h2>
-            <h3 class="cert-cover-bq-number">认证号：<span ref="common.attestation_no" class="xfield">{{.CertId}}</span>
+            <h3 class="cert-cover-bq-number">认证号：<span ref="common.attestation_no" class="xfield">{{.CertRecord.CertId}}</span>
             </h3>
             <div class="cert-cover-content">
                 <table>
                     <tbody>
                     <tr>
                         <td>认证人：</td>
-                        <td><span ref="att.name" class="xfield">{{.CertName}}</span>&nbsp;</td>
+                        <td><span ref="att.name" class="xfield">{{.CertRecord.CertName}}</span>&nbsp;</td>
                     </tr>
                     <tr>
                         <td>联系方式：</td>
-                        <td><span ref="user.phone_number" class="xfield">{{.Phone}}</span>&nbsp;</td>
+                        <td><span ref="user.phone_number" class="xfield">{{.CertRecord.Phone}}</span>&nbsp;</td>
                     </tr>
                     <tr>
                         <td>身份证：</td>
-                        <td><span ref="att.idCard" class="xfield">{{.CertCard}}</span>&nbsp;</td>
+                        <td><span ref="att.idCard" class="xfield">{{.CertRecord.CertCard}}</span>&nbsp;</td>
                     </tr>
                     <tr>
                         <td>认证平台：</td>
@@ -196,15 +196,15 @@
                     </tr>
                     <tr>
                         <td>文件名称：</td>
-                        <td><span ref="att.fileName" class="xfield">{{.FileName}}</span>&nbsp;</td>
+                        <td><span ref="att.fileName" class="xfield">{{.CertRecord.FileName}}</span>&nbsp;</td>
                     </tr>
                     <tr>
                         <td>文件大小：</td>
-                        <td><span ref="att.fileSize" class="xfield">{{.FileSize}}</span>&nbsp;字节</td>
+                        <td><span ref="att.fileSize" class="xfield">{{.CertRecord.FileSize}}</span>&nbsp;字节</td>
                     </tr>
                     <tr>
                         <td>认证时间：</td>
-                        <td><span ref="common.attestation_at" class="xfield">{{.CertTime}}</span>&nbsp;</td>
+                        <td><span ref="common.attestation_at" class="xfield">{{.CertRecord.CertTimeFormat}}</span>&nbsp;</td>
                     </tr>
                     </tbody>
                 </table>

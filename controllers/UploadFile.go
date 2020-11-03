@@ -85,6 +85,7 @@ func (u *UploadFileController) Post() {
 		Phone: phone,
 	}
 	user, _ = user.QueryUserByPhone()
+	fmt.Println("用户的信息：", user.Name, user.Phone, user.Card)
 	//将用户上传的文件的md5值和sha256值保存到区块链上，即数据上链
 	certRecord := models.CertRecord{
 		CertId:   []byte(md5String),
@@ -98,12 +99,12 @@ func (u *UploadFileController) Post() {
 	}
 	//序列化
 	certBytes, _ := certRecord.Serialize()
-	block, err := blockchain.CHAIN.AddData(certBytes)
+	_, err = blockchain.CHAIN.AddData(certBytes)
 	if err != nil {
 		u.Ctx.WriteString("抱歉，数据上链错误：" + err.Error())
 		return
 	}
-	fmt.Println("恭喜，已经数据保存到区块链中，区块高度是:", block.Height)
+	//fmt.Println("恭喜，已经数据保存到区块链中，区块高度是:", block.Height)
 
 	//上传文件保存到数据库中成功
 	records, err := models.QueryRecordsByUserId(user1.Id)
